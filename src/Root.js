@@ -12,7 +12,7 @@ import { onPatch } from 'mobx-state-tree';
 import makeInspectable from 'mobx-devtools-mst';
 import store, { routerModel } from './store';
 
-import App from './components/App';
+import App from './containers/App';
 
 // Devtools
 makeInspectable(store);
