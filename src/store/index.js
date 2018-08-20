@@ -8,9 +8,11 @@ const Store = types.model({
   router: RouterModel,
 });
 
-const store = Store.create({
+const initialState = {
   menuIsOpen: true,
   router: routerModel,
-});
+};
+
+const store = Store.create(initialState);
 
 export default store;

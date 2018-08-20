@@ -14,8 +14,8 @@ import store, { routerModel } from './store';
 
 import App from './components/App';
 
+// Devtools
 makeInspectable(store);
-
 onPatch(store, patch => {
   console.log(patch);
 });
