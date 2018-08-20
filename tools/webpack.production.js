@@ -2,7 +2,7 @@ const { DefinePlugin } = require('webpack');
 const AssetsWebpackPlugin = require('assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const { PATH } = require('./constants');
+const { PATH, CSS_MODULES_HASH } = require('./constants');
 
 module.exports = {
   mode: 'production',
@@ -71,6 +71,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: false,
+              modules: true,
+              importLoaders: 1,
+              localIdentName: CSS_MODULES_HASH,
               minimize: true,
             },
           },
@@ -82,36 +85,6 @@ module.exports = {
               config: {
                 path: PATH.postcssConfig,
               },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: false,
-              minimize: true,
-            },
-          },
-          'resolve-url-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: false,
-              config: {
-                path: PATH.postcssConfig,
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: false,
-              minimize: true,
             },
           },
         ],

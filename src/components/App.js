@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { observer } from 'mobx-react';
 
 const App = () => (
   <Fragment>
@@ -6,4 +7,4 @@ const App = () => (
   </Fragment>
 );
 
-export default App;
+export default observer(App);

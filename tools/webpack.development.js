@@ -1,6 +1,6 @@
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const { PATH } = require('./constants');
+const { PATH, CSS_MODULES_HASH } = require('./constants');
 
 module.exports = {
   mode: 'development',
@@ -71,6 +71,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
+              modules: true,
+              importLoaders: 1,
+              localIdentName: CSS_MODULES_HASH,
             },
           },
           'resolve-url-loader',
@@ -81,34 +84,6 @@ module.exports = {
               config: {
                 path: PATH.postcssConfig,
               },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          'resolve-url-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              config: {
-                path: PATH.postcssConfig,
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
             },
           },
         ],

@@ -10,4 +10,6 @@ const PATH = {
   favicon: join(__dirname, '..', 'src', 'favicon.png'),
 };
 
-module.exports = { IS_DEVELOPMENT, PATH };
+const CSS_MODULES_HASH = '[local]__[hash:base64:8]';
+
+module.exports = { IS_DEVELOPMENT, PATH, CSS_MODULES_HASH };

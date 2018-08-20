@@ -1,15 +1,20 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import store, { history } from './store';
+import { Provider } from 'mobx-react';
+import { onPatch } from 'mobx-state-tree';
+import makeInspectable from 'mobx-devtools-mst';
+import store from './store';
 import App from './components/App';
+
+makeInspectable(store);
+
+onPatch(store, patch => {
+  console.log(patch);
+});
 
 const Root = () => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
+    <App />
   </Provider>
 );
 

@@ -1,6 +1,6 @@
 const { NoEmitOnErrorsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { PATH } = require('./constants');
+const { PATH, CSS_MODULES_HASH } = require('./constants');
 
 module.exports = {
   entry: {
@@ -26,7 +26,25 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['env', 'stage-0', 'react'],
+              plugins: [
+                'transform-decorators-legacy',
+                'react-hot-loader/babel',
+                [
+                  'react-css-modules',
+                  {
+                    generateScopedName: CSS_MODULES_HASH,
+                    webpackHotModuleReloading: true,
+                  },
+                ],
+              ],
+            },
+          },
+        ],
       },
     ],
   },
