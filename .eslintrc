@@ -12,8 +12,10 @@
     "jasmine": true
   },
   "rules": {
-    "import/no-extraneous-dependencies": 0,
-    "react/jsx-filename-extension": 0,
-    "react/jsx-one-expression-per-line": 0
+    "import/no-extraneous-dependencies": false,
+    "react/jsx-filename-extension": false,
+    "react/jsx-one-expression-per-line": false,
+    "react/prop-types": false,
+    "import/prefer-default-export": false
   }
 }

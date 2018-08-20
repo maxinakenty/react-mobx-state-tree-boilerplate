@@ -1,10 +1,30 @@
-import React, { Fragment } from 'react';
-import { observer } from 'mobx-react';
+import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 
-const App = () => (
-  <Fragment>
-    <h1>Hi, Guys!</h1>
-  </Fragment>
-);
+@observer
+@withRouter
+@inject([])
+class App extends Component {
+  render() {
+    const {
+      stores: {
+        router: { location, push, goBack },
+      },
+    } = this.props;
 
-export default observer(App);
+    return (
+      <div>
+        <span>Current pathname: {location.pathname}</span>
+        <button type="button" onClick={() => push('/test')}>
+          Change url
+        </button>
+        <button type="button" onClick={() => goBack()}>
+          Go Back
+        </button>
+      </div>
+    );
+  }
+}
+
+export default App;

@@ -1,11 +1,11 @@
 import { types } from 'mobx-state-tree';
 
-const Store = types.model({
+const MenuStore = types.model({
   isOpenMenu: types.boolean,
 });
 
-const store = Store.create({
+const menuStore = MenuStore.create({
   isOpenMenu: true,
 });
 
-export default store;
+export default menuStore;
