@@ -6,6 +6,9 @@ import makeInspectable from 'mobx-devtools-mst';
 import store from './store';
 import App from './components/App';
 
+import 'normalize.css';
+import './styles/main.css';
+
 makeInspectable(store);
 
 onPatch(store, patch => {

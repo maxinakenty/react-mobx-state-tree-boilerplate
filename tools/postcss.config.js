@@ -7,10 +7,12 @@ const vars = require('postcss-simple-vars');
 const nested = require('postcss-nested');
 const mixins = require('postcss-mixins');
 const cssImport = require('postcss-import');
+const colorFunctions = require('postcss-sass-color-functions');
 
 module.exports = () => ({
   plugins: [
     autoprefixer,
+    colorFunctions,
     cssImport,
     short,
     flexbugs,
