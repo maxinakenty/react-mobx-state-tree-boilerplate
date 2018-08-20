@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 
+const mapping = ({ store }) => ({
+  router: store.router,
+});
+
 @observer
 @withRouter
-@inject([])
+@inject(mapping)
 class App extends Component {
   render() {
     const {
-      stores: {
-        router: { location, push, goBack },
-      },
+      router: { location, push, goBack },
     } = this.props;
 
     return (

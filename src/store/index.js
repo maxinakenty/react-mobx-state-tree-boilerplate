@@ -3,10 +3,14 @@ import { RouterModel } from 'mst-react-router';
 
 export const routerModel = RouterModel.create();
 
-const RouterStore = types.model({
+const Store = types.model({
+  menuIsOpen: types.boolean,
   router: RouterModel,
 });
 
-const routerStore = RouterStore.create({ router: routerModel });
+const store = Store.create({
+  menuIsOpen: true,
+  router: routerModel,
+});
 
-export default routerStore;
+export default store;
